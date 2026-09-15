@@ -1,0 +1,1 @@
+{"name":"dsh-context-guard","version":"1.0.1","private":true,"author":"xoykor","type":"module","main":"lib/index.js","files":["lib/index.js","cordis.patch.yml"],"dsh":{"bundle":{"patch":"./cordis.patch.yml"}}}

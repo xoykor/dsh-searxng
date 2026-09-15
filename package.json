@@ -1,0 +1,1 @@
+{"name":"xoykor-dsh-community-plugins","private":true,"type":"module","scripts":{"test":"node --test --test-isolation=none packages/context-guard/tests/*.test.mjs packages/searxng/*.test.mjs"}}
