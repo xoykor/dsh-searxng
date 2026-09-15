@@ -1,1 +1,20 @@
-{"name":"xoykor-dsh-community-plugins","private":true,"type":"module","scripts":{"test":"node --test --test-isolation=none packages/context-guard/tests/*.test.mjs packages/searxng/*.test.mjs"}}
+{
+  "name": "dsh-searxng",
+  "version": "1.0.0",
+  "private": true,
+  "author": "xoykor",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "node --test --test-isolation=none provider.test.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
