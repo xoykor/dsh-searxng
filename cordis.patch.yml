@@ -1,0 +1,3 @@
+- insert:
+    - id: web-search-searxng
+      name: dsh-web-search-searxng
