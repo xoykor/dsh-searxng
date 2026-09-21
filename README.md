@@ -1,8 +1,25 @@
 # dsh-searxng
 
-Unofficial SearXNG search-provider plugin for DeepSeek Harness (DSH), independently maintained by **xoykor**. Not affiliated with or endorsed by DeepSeek.
+Unofficial **SearXNG search-provider plugin for DeepSeek Harness (DSH)**, independently maintained by **xoykor**. It lets DSH route web-search requests through a self-hosted SearXNG instance instead of depending on a proprietary search provider. Not affiliated with or endorsed by DeepSeek.
 
 The plugin registers a `searxng` provider with DSH's web service and sends searches to a configurable SearXNG instance. The default endpoint is `http://127.0.0.1:8888`.
+
+## Architecture
+
+```text
+DSH web service
+    |
+    v
+dsh-searxng provider
+    |
+    v
+SearXNG JSON endpoint
+    |
+    v
+normalized search results
+```
+
+The adapter is intentionally small: it does not launch SearXNG, manage its configuration or proxy arbitrary traffic.
 
 ## Requirements
 
@@ -26,6 +43,16 @@ Inspect `cordis.patch.yml` and the effective profile configuration before restar
 
 The loader's `baseURL` option can point to a different SearXNG endpoint. `maxResults` is sent as a server hint; this adapter does not guarantee a client-side result cap or detect server-side truncation.
 
+## Configuration
+
+The provider defaults to:
+
+```text
+http://127.0.0.1:8888
+```
+
+The loader's `baseURL` option can point to another reachable SearXNG instance. The server must have JSON output enabled. `maxResults` is forwarded as a hint; the adapter does not guarantee that every SearXNG deployment will enforce the same result count.
+
 ## Tests
 
 With a recent Node.js version:
@@ -39,3 +66,8 @@ The tests mock HTTP transport and cover provider registration, query encoding, r
 ## Provenance
 
 Originally extracted from xoykor's DSH configuration/backup and subsequently published as a standalone plugin. Maintained with AI-assisted development and review.
+
+
+## License
+
+GNU General Public License v3.0. See [LICENSE](LICENSE).
